@@ -8,6 +8,8 @@ Amazon Connect インスタンス アクセスURL:
 
 AgentCore Gateway ゲートウェイID（member-auth-gateway）:
 
+テストにてかける電話番号:
+
 ■ 商品注文フロー
 
 API Gateway用 IAMロール ARN（APIGateway-SupermarketOrder-LambdaInvoke）:

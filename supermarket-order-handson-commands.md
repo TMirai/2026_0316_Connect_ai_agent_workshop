@@ -2,14 +2,18 @@
 
 ## Step 0: API Gateway作成
 ### IAMロール作成
-| 項目 | 値 |
-|---|---|
-| ロール名 | `APIGateway-SupermarketOrder-LambdaInvoke` |
+
+ロール名:
+```
+APIGateway-SupermarketOrder-LambdaInvoke
+```
 
 ### IAMロールにインラインポリシー追加
-| 項目 | 値 |
-|---|---|
-| ポリシー名 | `InvokeSupermarketLambdas` |
+
+ポリシー名:
+```
+InvokeSupermarketLambdas
+```
 
 ### API Gateway作成
 API定義に以下コードを追加：
@@ -175,66 +179,105 @@ paths:
 ## Step 1: MCP サーバー作成
 ### Bedrock AgentCore Gateway：ゲートウェイの詳細
 
-| 項目 | 値 |
-|---|---|
-| Gateway name | `supermarket-order-gateway` |
-| Gateway description | `商品注文用ゲートウェイ` |
+Gateway name:
+```
+supermarket-order-gateway
+```
+
+Gateway description:
+```
+商品注文用ゲートウェイ
+```
 
 ### Bedrock AgentCore Gateway：インバウンド認証設定
 
-| 項目 | 値 |
-|---|---|
-| Gateway description | `Connectインスタンスアクセスurl/.well-known/openid-configuration` |
-| Allowed audiences | `placeholder` |
+Gateway description:
+```
+Connectインスタンスアクセスurl/.well-known/openid-configuration
+```
+
+Allowed audiences:
+```
+placeholder
+```
 
 ### Bedrock AgentCore Gateway：許可
 
-| 項目 | 値 |
-|---|---|
-| サービスロール名 | `AgentCoreGateway-supermarket-order-ServiceRole` |
+サービスロール名:
+```
+AgentCoreGateway-supermarket-order-ServiceRole
+```
 
 ### Bedrock AgentCore Gateway：ターゲット
 
-| 項目 | 値 |
-|---|---|
-| ターゲット名 | `supermarket-api-target` |
-| Target description | `商品注文API` |
+ターゲット名:
+```
+supermarket-api-target
+```
+
+Target description:
+```
+商品注文API
+```
 
 ---
 
 ## Step 2: MCP サーバーをConnectに関連付け
 ### Amazon Connect Add Integration：基本情報
-| 項目 | 値 |
-|---|---|
-| 表示名 | `supermarket-order-gateway` |
-| 説明-オプション | `商品注文用AgentCore Gateway` |
+
+表示名:
+```
+supermarket-order-gateway
+```
+
+説明-オプション:
+```
+商品注文用AgentCore Gateway
+```
 
 ---
 
 ## Step 3: AI エージェントの作成
 ### Amazon Connect ログイン
-| 項目 | 値 |
-|---|---|
-| Username | `admin` |
-| Password | `A!Ag3nts` |
+
+Username:
+```
+admin
+```
+
+Password:
+```
+A!Ag3nts
+```
 
 ### Amazon Connect ：AIエージェントのセキュリティプロファイル
-| 項目 | 値 |
-|---|---|
-| 名前 | `supermarket-order-ai-agent` |
-| 説明 | `商品注文AIエージェント用セキュリティプロファイル` |
+
+名前:
+```
+supermarket-order-ai-agent
+```
+
+説明:
+```
+商品注文AIエージェント用セキュリティプロファイル
+```
 
 ### Amazon Connect ：AIエージェントを作成
-| 項目 | 値 |
-|---|---|
-| 名前 | `supermarket-order-ai-agent` |
+
+名前:
+```
+supermarket-order-ai-agent
+```
 
 ---
+
 ## Step 4: AI プロンプトの作成とエージェント公開
 ### AI プロンプトを作成
-| 項目 | 値 |
-|---|---|
-| 名前 | `supermarket-order-ai-prompt` |
+
+名前:
+```
+supermarket-order-ai-prompt
+```
 
 プロンプトを以下に置き換え:
 
@@ -413,23 +456,35 @@ messages:
   - role: assistant
     content: <message>
 ```
+
 ---
+
 ## Step 5: Connect用のLexボット作成
 ### Lexボット作成
-| 項目 | 値 |
-|---|---|
-| 名前 | `SuperOrderBot` |
-| 説明 | `Bot for Super Order AI Agent` |
+
+名前:
+```
+SuperOrderBot
+```
+
+説明:
+```
+Bot for Super Order AI Agent
+```
 
 ### Lexボットのエイリアス作成
-| 項目 | 値 |
-|---|---|
-| alias name | `prod` |
+
+alias name:
+```
+prod
+```
 
 ---
 
 ## Step 6: Connectフロー修正
 ### 「顧客の入力を取得する」ブロックを追加
-| 項目 | 値 |
-|---|---|
-| カスタマープロンプト | `スーパーマーケットコンシェルジュにお繋ぎします。しばらくお待ちください。` |
+
+カスタマープロンプト:
+```
+スーパーマーケットコンシェルジュにお繋ぎします。しばらくお待ちください。
+```

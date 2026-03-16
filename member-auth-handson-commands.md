@@ -472,3 +472,18 @@ prod
 ```
 x-amz-lex:audio:end-timeout-ms:*:*
 ```
+
+---
+
+## Step 8: 電話をかけてみる
+### 別Connectインスタンス(outbound-coopsapporo-workshop-アカウントid)にアクセス
+
+Username:
+```
+admin
+```
+
+Password:
+```
+A!Ag3ntt
+```

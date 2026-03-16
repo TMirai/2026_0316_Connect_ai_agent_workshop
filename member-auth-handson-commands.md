@@ -2,10 +2,10 @@
 
 ## Step 0: Connect Assistant作成
 
-| 項目 | 値 |
-|---|---|
-| ドメイン名 | `AnyCompany` |
-
+ドメイン名:
+```
+AnyCompany
+```
 
 KMSキーのキーポリシーを以下に修正。(AWSアカウント部分を置換)：
 
@@ -59,31 +59,51 @@ let phoneNumber = String(event.Details?.Parameters?.phoneNumber || event.phoneNu
 ## Step 2: MCP サーバー作成
 ### Bedrock AgentCore Gateway：ゲートウェイの詳細
 
-| 項目 | 値 |
-|---|---|
-| Gateway name | `member-auth-gateway` |
-| Gateway description | `組合員認証用ゲートウェイ` |
+Gateway name:
+```
+member-auth-gateway
+```
+
+Gateway description:
+```
+組合員認証用ゲートウェイ
+```
 
 ### Bedrock AgentCore Gateway：インバウンド認証設定
 
-| 項目 | 値 |
-|---|---|
-| Gateway description | `Connectインスタンスアクセスurl/.well-known/openid-configuration` |
-| Allowed audiences | `placeholder` |
+Gateway description:
+```
+Connectインスタンスアクセスurl/.well-known/openid-configuration
+```
+
+Allowed audiences:
+```
+placeholder
+```
 
 ### Bedrock AgentCore Gateway：許可
 
-| 項目 | 値 |
-|---|---|
-| サービスロール名 | `AgentCoreGateway-member-auth-ServiceRole` |
+サービスロール名:
+```
+AgentCoreGateway-member-auth-ServiceRole
+```
 
 ### Bedrock AgentCore Gateway：ターゲット
 
-| 項目 | 値 |
-|---|---|
-| ターゲット名 | `member-auth-target` |
-| Target description | `組合員認証Lambda` |
-| Lambda ARN | `コピーしたManualAuth関数のARN:$LATEST` |
+ターゲット名:
+```
+member-auth-target
+```
+
+Target description:
+```
+組合員認証Lambda
+```
+
+Lambda ARN:
+```
+コピーしたManualAuth関数のARN:$LATEST
+```
 
 インラインスキーマを以下のコードに置換:
 
@@ -135,36 +155,65 @@ let phoneNumber = String(event.Details?.Parameters?.phoneNumber || event.phoneNu
 
 ## Step 3: MCP サーバーをConnectに関連付け
 ### Amazon Connect Add Integration：基本情報
-| 項目 | 値 |
-|---|---|
-| 表示名 | `member-auth-gateway` |
-| 説明-オプション | `組合員認証用AgentCore Gateway` |
+
+表示名:
+```
+member-auth-gateway
+```
+
+説明-オプション:
+```
+組合員認証用AgentCore Gateway
+```
+
 ---
+
 ## Step 4: AI エージェントの作成
 ### Amazon Connect ログイン
-| 項目 | 値 |
-|---|---|
-| Username | `admin` |
-| Password | `A!Ag3nts` |
+
+Username:
+```
+admin
+```
+
+Password:
+```
+A!Ag3nts
+```
 
 ### Amazon Connect ：AIエージェントのセキュリティプロファイル
-| 項目 | 値 |
-|---|---|
-| 名前 | `member-auth-ai-agent` |
-| 説明 | `組合員認証を実施するAIエージェント用セキュリティプロファイル` |
+
+名前:
+```
+member-auth-ai-agent
+```
+
+説明:
+```
+組合員認証を実施するAIエージェント用セキュリティプロファイル
+```
 
 ### Amazon Connect ：AIエージェントを作成
-| 項目 | 値 |
-|---|---|
-| 名前 | `member-auth-ai-agent` |
-| 説明 | `member-auth-ai-agent` |
+
+名前:
+```
+member-auth-ai-agent
+```
+
+説明:
+```
+member-auth-ai-agent
+```
 
 ---
+
 ## Step 5: AI プロンプトの作成とエージェント公開
 ### AI プロンプトを作成
-| 項目 | 値 |
-|---|---|
-| 名前 | `member-auth-ai-prompt` |
+
+名前:
+```
+member-auth-ai-prompt
+```
 
 プロンプトを以下に置き換え:
 
@@ -386,24 +435,40 @@ messages:
   - role: assistant
     content: <message>
 ```
+
 ---
+
 ## Step 5: Connect用のLexボット作成
 ### Lexボット作成
-| 項目 | 値 |
-|---|---|
-| 名前 | `MemberAuthBot` |
-| 説明 | `Bot for member auth AI Agent` |
+
+名前:
+```
+MemberAuthBot
+```
+
+説明:
+```
+Bot for member auth AI Agent
+```
 
 ### Lexボットのエイリアス作成
-| 項目 | 値 |
-|---|---|
-| alias name | `prod` |
+
+alias name:
+```
+prod
+```
 
 ---
 
 ## Step 7: Connectフロー修正
 ### 「顧客の入力を取得する」ブロックを追加
-| 項目 | 値 |
-|---|---|
-| カスタマープロンプト | `組合員番号と電話番号で認証します。まず、8桁の組合員番号を教えてください。` |
-| セッション属性(宛先キー) | `x-amz-lex:audio:end-timeout-ms:*:*` |
+
+カスタマープロンプト:
+```
+組合員番号と電話番号で認証します。まず、8桁の組合員番号を教えてください。
+```
+
+セッション属性(宛先キー):
+```
+x-amz-lex:audio:end-timeout-ms:*:*
+```

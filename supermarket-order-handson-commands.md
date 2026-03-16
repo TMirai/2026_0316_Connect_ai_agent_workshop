@@ -488,3 +488,16 @@ prod
 ```
 スーパーマーケットコンシェルジュにお繋ぎします。しばらくお待ちください。
 ```
+
+## Step 7: 電話をかけてみる
+### 別Connectインスタンス(outbound-coopsapporo-workshop-アカウントid)にアクセス
+
+Username:
+```
+admin
+```
+
+Password:
+```
+A!Ag3ntt
+```

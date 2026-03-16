@@ -1,0 +1,2 @@
+# 2026_0316_Connect_ai_agent_workshop
+Connect AI Agentワークショップのコマンド/設定値集

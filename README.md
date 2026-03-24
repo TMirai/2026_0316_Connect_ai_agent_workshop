@@ -7,3 +7,4 @@
 | [member-auth-handson-commands.md](member-auth-handson-commands.md) | 組合員認証フロー ハンズオンのコピペ集 |
 | [supermarket-order-handson-commands.md](supermarket-order-handson-commands.md) | 商品注文フロー ハンズオンのコピペ集 |
 | [handson-copy-values.md](handson-copy-values.md) | ハンズオン中にコピーする値の一覧 |
+| [数字の読み方指定AIプロンプト.md](数字の読み方指定AIプロンプト.md) | AIプロンプト例集 |
